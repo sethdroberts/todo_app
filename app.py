@@ -1,5 +1,6 @@
 from uuid import uuid4
 from functools import wraps
+import os
 
 from flask import (
     flash,
@@ -168,4 +169,7 @@ def delete_list(lst, list_id):
     return redirect(url_for('get_lists'))
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    if os.environ.get('FLASK_ENVIRON') == 'production':
+        app.run(debug=False)
+    else:
+        app.run(debug=True, port=8080)
