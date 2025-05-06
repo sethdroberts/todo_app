@@ -1,13 +1,14 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+
   {% if lists %}
     
     <ul id="lists">
         {% for lst in lists %}
         
             <li>
-                <a>
+                <a href="{{ url_for('get_list', list_id = lst.id) }}">
                     <h2> {{lst.title}} </h2>
                     <p>{{ lst.todos | length }}</p>
                 </a>
@@ -15,9 +16,6 @@
         
         {% endfor %}
     </ul>
-    
-    
-    
     
   {% else %}
     <p id="no_list">You don't have any todo lists. Why not create one?</p>
