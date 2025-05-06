@@ -14,13 +14,13 @@ def get_list_by_id(list_id, lists):
     for lst in lists:
         if lst['id'] == list_id:
             return lst
-    raise NotFound('List not found')
+    return None
     
 def get_todo_by_id(todo_id, todo_list):
     for todo in todo_list:
         if todo['id'] == todo_id:
             return todo
-    raise NotFound('Todo not found')
+    return None
     
 def mark_all_complete(todo_list):
     for todo in todo_list:
