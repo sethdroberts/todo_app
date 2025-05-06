@@ -7,10 +7,10 @@
     <ul id="lists">
         {% for lst in lists %}
         
-            <li>
+            <li class="{{ 'complete' if is_list_completed(lst) else '' }}">
                 <a href="{{ url_for('get_list', list_id = lst.id) }}">
                     <h2> {{lst.title}} </h2>
-                    <p>{{ lst.todos | length }}</p>
+                    <p>{{ todos_remaining(lst) }} / {{ lst.todos | length }}</p>
                 </a>
             </li>
         
